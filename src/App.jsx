@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import Home from "./pages/Home";
 import Carrinho from "./pages/Carrinho";
 import PaginaErro from "./pages/PaginaErro";
-
 import "./App.css";
+import { CarrinhoProvider } from "./context/CarrinhoContext";
 
 function App() {
   // const [carrinho, setCarrinho] = useState([]);
@@ -67,35 +67,38 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              carrinho={carrinho}
-              adicionarProduto={adicionarProduto}
-              removerProduto={removerProduto}
-              removerProdutoCarrinho={removerProdutoCarrinho}
-              valorTotalCarrinho={valorTotalCarrinho}
-              quantidadeProdutos={quantidadeProdutos}
+      <CarrinhoProvider>
+        <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  // carrinho={carrinho}
+                  // adicionarProduto={adicionarProduto}
+                  // removerProduto={removerProduto}
+                  // removerProdutoCarrinho={removerProdutoCarrinho}
+                  // valorTotalCarrinho={valorTotalCarrinho}
+                  // quantidadeProdutos={quantidadeProdutos}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="/carrinho"
-          element={
-            <Carrinho
-              carrinho={carrinho}
-              adicionarProduto={adicionarProduto}
-              removerProduto={removerProduto}
-              removerProdutoCarrinho={removerProdutoCarrinho}
-              valorTotalCarrinho={valorTotalCarrinho}
-              quantidadeProdutos={quantidadeProdutos}
+            <Route
+              path="/carrinho"
+              element={
+                <Carrinho
+                  // carrinho={carrinho}
+                  // adicionarProduto={adicionarProduto}
+                  // removerProduto={removerProduto}
+                  // removerProdutoCarrinho={removerProdutoCarrinho}
+                  // valorTotalCarrinho={valorTotalCarrinho}
+                  // quantidadeProdutos={quantidadeProdutos}
+                />
+              }
             />
-          }
-        />
-        <Route path="*" element={<PaginaErro />} />
-      </Routes>
+            <Route path="*" element={<PaginaErro />} />
+          </Routes>
+      </CarrinhoProvider>
+      
     </BrowserRouter>
   );
 }
